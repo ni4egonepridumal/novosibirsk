@@ -1,0 +1,30 @@
+.appContainer {
+  height: 100vh;
+  &_inner {
+    margin: 0 auto;
+    padding: 50px 50px;
+  }
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    & h3 {
+      font-size: 32px;
+      font-weight: 700;
+      color: rgba(227, 31, 36, 1);
+    }
+    & p {
+      font-size: 16px;
+    }
+  }
+  &_content {
+    display: grid;
+    grid-template-columns: 23% 77%;
+    min-height: 750px; // подумай как решить вопрос сверсткой
+    border-radius: 10px;
+    border: solid 1.5px rgba(233, 236, 239, 1);
+    background-color: rgba(253, 253, 253, 1);
+  }
+}
+.userCart {
+  border-right: solid 1.5px rgba(233, 236, 239, 1);
+}

@@ -1,0 +1,51 @@
+.users {
+  display: flex;
+  justify-content: center;
+
+  &_inner {
+    position: relative;
+  }
+  &_text {
+    font-weight: 600;
+    font-size: 16px;
+  }
+  &_input {
+    width: 240px;
+    height: 46px;
+    border-radius: 8px;
+    border: solid 1.5px rgba(233, 236, 239, 1);
+    &::placeholder {
+      color: rgba(118, 120, 125, 1);
+    }
+  }
+  &_item {
+    // background-color: aqua;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  &_itemActive {
+    background-color: rgba(224, 224, 224, 1);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  &_content {
+    padding-top: 50px;
+  }
+  &_itemInner {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    border: solid 1.5px rgba(233, 236, 239, 1);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 1);
+    width: 240px;
+    height: 70px;
+    margin-top: 15px;
+  }
+  &_name {
+    font-weight: 600;
+    margin: 10px 0px 5px 10px;
+  }
+  &_email {
+    margin: 10px 0px 5px 10px;
+  }
+}
