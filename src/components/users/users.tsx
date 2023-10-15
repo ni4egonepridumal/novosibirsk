@@ -1,51 +1,39 @@
 import React from "react"
 import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
-import { getValueFromInput, getOneUser, testUseSlice } from "../../redux/slices/userSlices";
-import styles from "./users.module.scss"
+import { getValueFromInput, getOneUser } from "../../redux/slices/userSlices";
+import styles from "./users.module.scss";
+import { User } from "../../types";
 import cn from "classnames";
 
-interface IUsers {
-    allUsers: []
+interface IAllUser {
+    allUsers: User[],
     loader: boolean
 }
-export const Users = ({ allUsers, loader }) => {
+
+export const Users = ({ allUsers, loader }: IAllUser) => {
     const dispatch = useAppDispatch()
-    const { inputValue, choiseUsers, oneUser, test } = useAppSelector(state => state.users)
+    const { inputValue, oneUser } = useAppSelector(state => state.users)
+    let memoUsers: User[];
     const getInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const flag = allUsers.some(item => item.name == oneUser.name);
-        if (flag === false) {
+        const flag = memoUsers.some((item: User) => item.name === oneUser.name)
+        if (inputValue.length <= 1 || flag === false) {
             dispatch(getOneUser({}))
         }
         dispatch(getValueFromInput(e.target.value))
     }
-    // console.log("choiseUsers", choiseUsers, "oneUser", oneUser)
-    let memoUsers;
     const someFunction = () => {
         memoUsers = allUsers.map(item => item.name === oneUser.name ? { ...item, isActive: "true" } : { ...item, isActive: "false" })
         return memoUsers
     }
-    const getMemoUsers = React.useMemo(() => someFunction(), [choiseUsers, oneUser])
-
-    const oneUserItem = (item) => {
-
-        let nwArr = getMemoUsers.filter(user => user.isActive !== item.isActive)
-        //пробую через массив начало
-        console.log(nwArr)
-        dispatch(testUseSlice(nwArr))
-
-
-        // 
+    const getMemoUsers = React.useMemo(() => someFunction(), [allUsers, oneUser])
+    const oneUserItem = (item: User) => {
         dispatch(getOneUser(item))
-
-        // dispatch(getOneUser(nwArr))
-
-        // allUsers = allUsers.map(item => item.name === oneUser.name ? { ...item, isActive: true } : { ...item, isActive: false })
     }
     return (
         <div className={styles.users}>
             <div className={styles.users_inner}>
                 <label>
-                    <p className={styles.users_text} onClick={() => dispatch(getValueFromInput(''))}>Поиск сотрудников</p>
+                    <p className={styles.users_text}>Поиск сотрудников</p>
                     <input
                         className={styles.users_input}
                         value={inputValue}
@@ -57,14 +45,14 @@ export const Users = ({ allUsers, loader }) => {
                 <div className={styles.loader}>{loader && "Подгружаю данные из Юзеров"}</div>
                 <div className={styles.users_content}>
                     {
-                        choiseUsers?.length > 0 ?
+                        allUsers?.length > 0 ?
                             <div >
                                 {getMemoUsers &&
-                                    getMemoUsers?.map((item: any) => (
-                                        <div className={styles.users_itemInner}>
+                                    getMemoUsers?.map((item: User) => (
+                                        <div key={item.name} className={styles.users_itemInner}>
                                             <img src="/img.svg" />
                                             <div
-                                                className={cn({
+                                                className={cn(styles.users_item, {
                                                     [styles.users_itemActive]: item.isActive === "true"
                                                 })}
                                                 key={item.id}
@@ -73,11 +61,11 @@ export const Users = ({ allUsers, loader }) => {
                                                 <p className={styles.users_name}>{item.name}</p>
                                                 <p className={styles.users_email}>{item.email}</p>
                                             </div>
-                                        </div>
-                                    ))}
+                                        </div>))
+                                }
                             </div>
                             :
-                            <p>начните поиск</p>
+                            <>{inputValue.length > 0 ? <p>Ничего не найдено</p> : <p>начните поиск</p>}</>
                     }
                 </div>
             </div>

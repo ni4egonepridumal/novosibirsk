@@ -2,7 +2,7 @@
   height: 100vh;
   &_inner {
     margin: 0 auto;
-    padding: 50px 50px;
+    padding: 129px 53px 44px 47px;
   }
   &_header {
     display: flex;
@@ -11,15 +11,17 @@
       font-size: 32px;
       font-weight: 700;
       color: rgba(227, 31, 36, 1);
+      margin-bottom: 44px;
     }
     & p {
       font-size: 16px;
+      margin-bottom: 44px;
     }
   }
   &_content {
     display: grid;
     grid-template-columns: 23% 77%;
-    min-height: 750px; // подумай как решить вопрос сверсткой
+    // min-height: 750px; // подумай как решить вопрос сверсткой
     border-radius: 10px;
     border: solid 1.5px rgba(233, 236, 239, 1);
     background-color: rgba(253, 253, 253, 1);
