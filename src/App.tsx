@@ -19,7 +19,6 @@ function App() {
     if (flag) {
       endOfEndpoint = endOfEndpoint.map(item => item.length >= 6 ? `id=${item.slice(4, 5)}&` : item)
     }
-    // console.log(endOfEndpoint)
     return endOfEndpoint
   }
 

@@ -18,11 +18,6 @@ export const Users = ({ allUsers, loader, error }: IAllUser) => {
     const getInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         const flag = memoUsers.some((item: User) => item.name === oneUser.name)
-        console.log("inputValue", inputValue)
-        console.log("flag", flag)
-        console.log("oneUser", oneUser)
-        console.log("getMemoUsers", getMemoUsers)
-        console.log("allUsers", allUsers)
         if (inputValue.length <= 1 || flag === false) {
             dispatch(getOneUser({}))
         }
