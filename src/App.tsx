@@ -18,9 +18,8 @@ function App() {
     const flag = endOfEndpoint.some(item => item === "id=1&")
     if (flag) {
       endOfEndpoint = endOfEndpoint.map(item => item.length >= 6 ? `id=${item.slice(4, 5)}&` : item)
-
     }
-    console.log(endOfEndpoint)
+    // console.log(endOfEndpoint)
     return endOfEndpoint
   }
 

@@ -16,8 +16,14 @@ export const Users = ({ allUsers, loader, error }: IAllUser) => {
     const { inputValue, oneUser } = useAppSelector(state => state.users)
     let memoUsers: User[];
     const getInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (inputValue.length <= 1) {
-            console.log(inputValue)
+
+        const flag = memoUsers.some((item: User) => item.name === oneUser.name)
+        console.log("inputValue", inputValue)
+        console.log("flag", flag)
+        console.log("oneUser", oneUser)
+        console.log("getMemoUsers", getMemoUsers)
+        console.log("allUsers", allUsers)
+        if (inputValue.length <= 1 || flag === false) {
             dispatch(getOneUser({}))
         }
         dispatch(getValueFromInput(e.target.value))
@@ -27,6 +33,7 @@ export const Users = ({ allUsers, loader, error }: IAllUser) => {
         return memoUsers
     }
     const getMemoUsers = React.useMemo(() => someFunction(), [allUsers, oneUser])
+
     const oneUserItem = (item: User) => {
         dispatch(getOneUser(item))
     }
