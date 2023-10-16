@@ -1,16 +1,42 @@
 .container {
   background-color: white;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-
   &_text {
     color: rgba(118, 120, 125, 1);
-    flex-grow: 1;
+    margin: auto 0;
   }
 }
 .user {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 60%;
+  &_img {
+    margin-top: 30px;
+    margin-left: 21px;
+  }
+  &_inner {
+    margin-top: 30px;
+  }
+  &_name {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  &_email {
+    margin-bottom: 10px;
+    span {
+      font-weight: 600;
+    }
+  }
+  &_phone {
+    margin-bottom: 20px;
+    span {
+      font-weight: 600;
+    }
+  }
+  &_about {
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 16px;
+  }
 }

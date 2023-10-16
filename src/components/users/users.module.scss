@@ -1,10 +1,6 @@
 .users {
   display: flex;
   justify-content: center;
-
-  &_itemInner {
-    margin-top: 18px;
-  }
   &_text {
     margin-top: 13px;
     font-weight: 600;
@@ -17,6 +13,7 @@
     border: solid 1.5px rgba(233, 236, 239, 1);
     margin-top: 22px;
     margin-bottom: 22px;
+    padding-left: 24px;
     &::placeholder {
       color: rgba(118, 120, 125, 1);
     }
@@ -30,24 +27,37 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
   }
+  &_notActive {
+    background-color: rgba(255, 255, 255, 1);
+  }
   &_content {
     margin-bottom: 10px;
   }
+
   &_itemInner {
-    display: grid;
-    grid-template-columns: 30% 70%;
-    grid-template-rows: 4fr 4fr;
+    display: flex;
+    flex-direction: row;
     border: solid 1.5px rgba(233, 236, 239, 1);
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 1);
-    width: 240px;
-    height: 70px;
+    margin-top: 18px;
   }
   &_name {
     font-weight: 600;
-    margin: 10px 0px 5px 10px;
+    margin: 15px 0px 5px 15px;
+    flex-grow: 1;
   }
   &_email {
-    margin: 10px 0px 5px 10px;
+    margin: 5px 0px 5px 15px;
   }
+}
+.img {
+  background-image: url("./img.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60px;
+  height: 60px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: solid 1.5px rgba(233, 236, 239, 1);
+  background-color: rgba(255, 255, 255, 1);
 }

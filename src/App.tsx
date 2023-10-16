@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { Users } from "./components/users";
 import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
@@ -10,7 +10,7 @@ function App() {
   const url = "https://jsonplaceholder.typicode.com/users/";
   const dispatch = useAppDispatch();
   const { choiseUsers, isLoading, inputValue } = useAppSelector(state => state.users)
-
+  const [error, setError] = useState<string>('')
   let endOfEndpoint = [];
 
   const endedFromAxios = (string: string) => {
@@ -18,7 +18,9 @@ function App() {
     const flag = endOfEndpoint.some(item => item === "id=1&")
     if (flag) {
       endOfEndpoint = endOfEndpoint.map(item => item.length >= 6 ? `id=${item.slice(4, 5)}&` : item)
+
     }
+    console.log(endOfEndpoint)
     return endOfEndpoint
   }
 
@@ -29,7 +31,7 @@ function App() {
       const response = await axios.get(url + "?" + result.join(''))
       dispatch(getFilteredUsers(response.data))
     } catch (error) {
-      console.error(error);
+      setError(error.message);
     }
   }
   useEffect(() => {
@@ -44,7 +46,7 @@ function App() {
         </div>
         <div className={styles.appContainer_content}>
           <div className={styles.userCart}>
-            <Users allUsers={choiseUsers} loader={isLoading} />
+            <Users allUsers={choiseUsers} loader={isLoading} error={error} />
           </div>
           <ChoiseUser />
         </div>

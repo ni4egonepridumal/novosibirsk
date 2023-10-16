@@ -7,15 +7,16 @@ export const ChoiseUser = () => {
     return (
         <div className={styles.container}>
             {oneUser.name ?
+
                 <div className={styles.user}>
-                    <div>
+                    <div className={styles.user_img}>
                         <img src='./bigImg.svg' />
                     </div>
-                    <div>
-                        <p>{oneUser.name}</p>
-                        <p><span>email</span>{oneUser.email}</p>
-                        <p><span>phone</span>{oneUser.phone}</p>
-                        <p>О себе</p>
+                    <div className={styles.user_inner}>
+                        <p className={styles.user_name}><span >{oneUser.name}</span></p>
+                        <p className={styles.user_email}><span >email: </span>{oneUser.email}</p>
+                        <p className={styles.user_phone}><span >phone: </span>{oneUser.phone}</p>
+                        <p className={styles.user_about}>О себе</p>
                         <p>Lorem ipsum dolor sit amet,
                             consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua.

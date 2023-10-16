@@ -1,8 +1,11 @@
 .appContainer {
+  display: grid;
+  grid-template-rows: 115px 1fr 58px;
+  grid-template-columns: 50px 1fr 50px;
   height: 100vh;
   &_inner {
-    margin: 0 auto;
-    padding: 129px 53px 44px 47px;
+    grid-column-start: 2;
+    grid-row-start: 2;
   }
   &_header {
     display: flex;
@@ -21,7 +24,7 @@
   &_content {
     display: grid;
     grid-template-columns: 23% 77%;
-    // min-height: 750px; // подумай как решить вопрос сверсткой
+    min-height: 628px;
     border-radius: 10px;
     border: solid 1.5px rgba(233, 236, 239, 1);
     background-color: rgba(253, 253, 253, 1);
